@@ -46,9 +46,13 @@ import GlobalLayout from "../components/layout/GlobalLayout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Book Management App",
+  title: {
+    default: "Book Mgt App | Home",           // This shows if a page doesn't specify its own title
+    template: "%s ",     // This applies if a page sets its own title
+  },
   description: "Manage your books and authors",
 };
+
 
 export default function RootLayout({
   children,

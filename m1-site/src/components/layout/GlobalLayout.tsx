@@ -32,7 +32,7 @@ const GlobalLayout = ({ children }: GlobalLayoutProps) => {
             <Link href="/books" className="hover:text-blue-600 transition">Books</Link>
             <div className="relative flex items-center space-x-1">
               <Link href="/authors" className="hover:text-blue-600 transition">Authors</Link>
-              <span className="bg-orange-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">HIRING</span>
+              <span className="bg-orange-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Stars</span>
             </div>
           </nav>
 
