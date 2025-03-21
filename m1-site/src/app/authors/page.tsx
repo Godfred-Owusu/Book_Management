@@ -179,6 +179,7 @@
 // };
 
 // export default AuthorsPage;
+"use client";
 
 import React, { useEffect, useState } from "react";
 import AuthorList from "../../components/authors/AuthorList";
@@ -200,11 +201,15 @@ const AuthorsPage: React.FC = () => {
   const [authors, setAuthors] = useState<Author[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Create / Edit / Delete states
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedAuthor, setSelectedAuthor] = useState<Author | null>(null);
+
+  // ✅ Set the browser tab title manually
+  useEffect(() => {
+    document.title = "Authors List";
+  }, []);
 
   useEffect(() => {
     const fetchAuthors = async () => {
@@ -242,8 +247,6 @@ const AuthorsPage: React.FC = () => {
     biography?: string;
     photo?: string;
   }) => {
-    console.log("PATCH payload:", updatedData);
-
     try {
       const updatedAuthor = await updateAuthor(updatedData.id, {
         name: updatedData.name,
@@ -257,7 +260,6 @@ const AuthorsPage: React.FC = () => {
       toast.success("Author updated!");
       setIsEditModalOpen(false);
     } catch (error) {
-      console.error("Update author error:", error);
       toast.error("Failed to update author.");
     }
   };
