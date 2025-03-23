@@ -1,17 +1,18 @@
 # 📚 CodiBook - Library Management System
 
-Welcome to **CodiBook**, a modern, full-stack **Library Management Web Application** built with **Next.js 13 (App Router)**, **React**, **TypeScript**, and **TailwindCSS**.  
+Welcome to **CodiBook**, a modern, full-stack **Library Management Web Application** built with **Next.js 13 (App Router)**, **React**, **TypeScript**, and **TailwindCSS**.\
 This project allows users to explore books, authors, and ratings in an interactive, responsive interface.
 
 ---
 
 ## 🚀 Features
 
-✅ **Browse Books**  
-✅ **View & Manage Authors**  
-✅ **Book Ratings**  
-✅ **Search & Filter Functionality**  
-✅ **Responsive Design**  
+✅ **Browse Books**\
+✅ **View & Manage Authors**\
+✅ **Book Ratings**\
+✅ **CRUD Functionality for Books, Authors, and Ratings**\
+✅ **Search and Sort Functionality**\
+✅ **Responsive Design**\
 ✅ **Reusability & Modularity** (component-driven architecture)
 
 ---
@@ -57,7 +58,8 @@ src/
 - **TypeScript**
 - **TailwindCSS**
 - **Framer Motion** (for smooth animations)
-- **Lucide-react / Heroicons** (for icons)
+- **Lucide-react** (for icons)
+- **react-spinners** (for loading)
 - **React Toastify** (for toast notifications)
 
 ---
@@ -93,40 +95,53 @@ Visit [http://localhost:3000](http://localhost:3000) to view the app in your bro
 
 ## 🧱 Components Overview
 
-### Layout Components
+### 📚 Authors Components
 
-| Component      | Description                        |
-| -------------- | ---------------------------------- |
-| `GlobalLayout` | Wraps pages with the global layout |
-| `Footer`       | Site footer with links & info      |
-| `Homepage`     | Hero section on the homepage       |
+| Component               | Description                          |
+| ----------------------- | ------------------------------------ |
+| `AuthorCard.tsx`        | Displays an individual author's card |
+| `AuthorList.tsx`        | Lists multiple authors               |
+| `CreateAuthorModal.tsx` | Modal for adding a new author        |
+| `EditAuthorModal.tsx`   | Modal for editing an existing author |
 
-### Authors Components
+### 📖 Books Components
 
-| Component           | Description                    |
-| ------------------- | ------------------------------ |
-| `AuthorCard`        | Displays brief author info     |
-| `AuthorList`        | Lists all authors              |
-| `CreateAuthorModal` | Modal to add new authors       |
-| `EditAuthorModal`   | Modal to edit existing authors |
+| Component             | Description                        |
+| --------------------- | ---------------------------------- |
+| `BookCard.tsx`        | Displays an individual book's card |
+| `BookList.tsx`        | Lists multiple books               |
+| `CreateBookModal.tsx` | Modal for adding a new book        |
 
-### Books Components
+### 🖼️ Layout Components
 
-| Component         | Description              |
-| ----------------- | ------------------------ |
-| `BookCard`        | Displays brief book info |
-| `BookList`        | Lists all books          |
-| `CreateBookModal` | Modal to add new books   |
+| Component             | Description                     |
+| --------------------- | ------------------------------- |
+| `BreadcrumbNav.tsx`   | Navigation breadcrumbs          |
+| `DrawerComponent.tsx` | Sidebar or drawer component     |
+| `Footer.tsx`          | Site footer                     |
+| `GlobalLayout.tsx`    | Global layout wrapper           |
+| `Homepage.tsx`        | Home page content and structure |
 
-### UI Components
+### ⭐ Ratings Components
 
-| Component                     | Description                   |
-| ----------------------------- | ----------------------------- |
-| `Button`                      | Reusable button component     |
-| `Modal` / `ConfirmationModal` | Custom modals & confirmations |
-| `Ratings` / `RatingCard`      | Displays book ratings         |
-| `TopRatings`                  | Lists top-rated books         |
-| `TopAuthors`                  | Lists top authors             |
+| Component        | Description                                 |
+| ---------------- | ------------------------------------------- |
+| `RatingCard.tsx` | Displays a rating card for a book or author |
+
+### ⚙️ UI Components
+
+| Component               | Description                         |
+| ----------------------- | ----------------------------------- |
+| `Button.tsx`            | Reusable button component           |
+| `ConfirmationModal.tsx` | Confirmation dialog/modal           |
+| `EntityFormModal.tsx`   | Form modal for entity creation/edit |
+| `Input.tsx`             | Custom input field                  |
+| `Loading.tsx`           | Loading spinner or placeholder      |
+| `Modal.tsx`             | Reusable modal component            |
+| `PageTitle.tsx`         | Reusable page title component       |
+| `Ratings.tsx`           | Star ratings display component      |
+| `TopAuthors.tsx`        | Lists top authors in the system     |
+| `TopRatings.tsx`        | Lists top-rated books in the system |
 
 ---
 
@@ -140,22 +155,50 @@ Visit [http://localhost:3000](http://localhost:3000) to view the app in your bro
 
 ## 📂 Folder Highlights
 
-| Folder            | Purpose                                 |
-| ----------------- | --------------------------------------- |
-| `/src/app`        | Next.js 13 App Router pages             |
-| `/src/components` | UI and functional components            |
-| `/src/models`     | TypeScript types (Book, Author, Rating) |
-| `/src/providers`  | API service functions (CRUD ops)        |
-| `/src/styles`     | CSS and Tailwind config                 |
+```
+/src/components/
+│
+├── authors/            # Author-related components
+│   ├── AuthorCard.tsx
+│   ├── AuthorList.tsx
+│   ├── CreateAuthorModal.tsx
+│   └── EditAuthorModal.tsx
+│
+├── books/              # Book-related components
+│   ├── BookCard.tsx
+│   ├── BookList.tsx
+│   └── CreateBookModal.tsx
+│
+├── layout/             # Global layout components
+│   ├── BreadcrumbNav.tsx
+│   ├── DrawerComponent.tsx
+│   ├── Footer.tsx
+│   ├── GlobalLayout.tsx
+│   └── Homepage.tsx
+│
+├── ratings/            # Rating-related components
+│   └── RatingCard.tsx
+│
+└── ui/                 # Reusable UI components
+    ├── Button.tsx
+    ├── ConfirmationModal.tsx
+    ├── EntityFormModal.tsx
+    ├── Input.tsx
+    ├── Loading.tsx
+    ├── Modal.tsx
+    ├── PageTitle.tsx
+    ├── Ratings.tsx
+    ├── TopAuthors.tsx
+    └── TopRatings.tsx
+```
 
 ---
 
-## ✅ Future Improvements
+## ✅ Current Functionality
 
-- User Authentication & Roles
-- Book Borrowing & Return System
-- Search & Filter Enhancements
-- Backend Integration (NestJS / Express API)
+- View Books, Authors, and Ratings
+- Full CRUD functionality for Books, Authors, and Ratings
+- Search and Sort functionality for Books and Authors
 
 ---
 
@@ -169,6 +212,16 @@ Visit [http://localhost:3000](http://localhost:3000) to view the app in your bro
 
 ---
 
+## 🤝 Contributing
+
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+---
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
@@ -178,5 +231,5 @@ This project is licensed under the [MIT License](LICENSE).
 ## 📬 Contact
 
 - **Project Lead**: _Godfred Mireku Owusu_
-- **Email**: _godfred-mireku.owusu@student.junia.com_
-- **GitHub**: [@Godfred-Owusu](https://github.com/Godfred-Owusu)
+- **Email**: _godfred-mireku.owusu\@student.junia.com_
+- **GitHub**: [@Godfred-Owusu]\([https://github.com/Godfred-Owusu](https://github.com/Godfred-Owusu))
